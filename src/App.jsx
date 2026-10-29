@@ -1,52 +1,61 @@
-import React, { useState } from "react";
-import "./App.css";
+import { useState, useEffect } from 'react';
+import './App.css';
 
-// Display Component Function
-function Display({ value }) {
+function App() {
+  const [display, setDisplay] = useState('10 Things That Require Zero Talent');
+
+  const handleKeyClick = (key) => {
+    switch (key) {
+      case '1': setDisplay('Being On Time'); break;
+      case '2': setDisplay('Making An Effort'); break;
+      case '3': setDisplay('Being High Energy'); break;
+      case '4': setDisplay('Having A Positive Attitude'); break;
+      case '5': setDisplay('Being Passionate'); break;
+      case '6': setDisplay('Using Good Body Language'); break;
+      case '7': setDisplay('Being Coachable'); break;
+      case '8': setDisplay('Doing A Little Extra'); break;
+      case '9': setDisplay('Being Prepared'); break;
+      case '0': setDisplay('Having A Strong Work Ethic'); break;
+      case 'NAME': setDisplay('MIGUEL JERVINZ LEGASPI'); break;
+      case 'SUBJ': setDisplay('C-PCIT9'); break;
+      default: break;
+    }
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(e.key)) {
+        handleKeyClick(e.key);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  // Ordered exactly like a calculator to match your layout image
+  const buttons = ['7', '8', '9', '4', '5', '6', '1', '2', '3', 'NAME', '0', 'SUBJ'];
+
   return (
-    <input
-      className="display"
-      type="text"
-      value={value}
-      disabled
-    />
-  );
-}
+    <div className="app-container">
+      <h2 className="header">MIGUEL JERVINZ LEGASPI - IT3A</h2> 
+      
+      <div className="display-area">
+        {display}
+      </div>
 
-// Button Component Function
-function Button({ label, className = "", onClick }) {
-  return (
-    <button className={className} onClick={onClick}>
-      {label}
-    </button>
-  );
-}
-
-export default function App() {
- 
-  return (
-    <div className="container">
-      <div className="calculator">
-        <h1 className="header">JUAN DELA CRUZ - IT3C</h1>
-        <Display value="10 Things That Require Zero Talent" />
-        <div className="buttons">
-          <Button label="7" />
-          <Button label="8" />
-          <Button label="9" />
-
-          <Button label="4" />
-          <Button label="5" />
-          <Button label="6" />
-
-          <Button label="1" />
-          <Button label="2" />
-          <Button label="3" />
-
-          <Button label="NAME" />
-          <Button label="0" />
-          <Button label="SUBJ" />
-        </div>
+      <div className="keypad">
+        {buttons.map((btn) => (
+          <button
+            key={btn}
+            onClick={() => handleKeyClick(btn)}
+            className="btn"
+          >
+            {btn}
+          </button>
+        ))}
       </div>
     </div>
   );
 }
+
+export default App;

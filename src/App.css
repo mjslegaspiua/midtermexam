@@ -1,43 +1,58 @@
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: #f4f4f4;
-}
-
-.calculator {
-  background: #fff;
-  padding: 24px 30px 30px 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-  min-width: 270px;
-}
-
-.display {
-  width: 100%;
-  height: 40px;
-  font-size: 1em;
-  margin-bottom: 16px;
+.app-container {
+  background-color: #fdfbf7; /* Light cream card */
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(62, 39, 35, 0.15); /* Soft dark brown shadow */
+  width: 400px;
   text-align: center;
-  border: none;
-  background: #eee;
-  border-radius: 5px;
-  padding: 7px;
 }
 
-.buttons {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+.header {
+  color: #3e2723; /* Deep espresso brown */
+  font-size: 22px;
+  margin-bottom: 20px;
+  font-weight: bold;
 }
 
-button {
-  font-size: 1.2em;
+.display-area {
+  background-color: #e8d8c8; /* Light latte */
+  color: #3e2723;
+  font-size: 16px;
   padding: 15px;
+  min-height: 60px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns layout */
+  gap: 12px;
+}
+
+.btn {
+  background-color: #d5bdaf; /* Warm mocha */
+  color: #3e2723;
   border: none;
-  border-radius: 5px;
-  background: #e0e0e0;
+  padding: 20px 10px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.btn:hover {
+  background-color: #c4a491; /* Darker mocha on hover */
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 3px rgba(0,0,0,0.1);
 }
